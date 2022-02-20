@@ -104,7 +104,12 @@ X[1:] # Skips the dummy first item
 #load_model = pickle.load(open('solubility_model.pkl', 'rb'))
 
 # Random forest
+df = pd.read_csv('https://github.com/dataprofessor/data/blob/master/delaney_solubility_with_descriptors.csv')
+X = df.drop(['logS'], axis=1)
+y = df.logS
+
 rf = RandomForestClassifier(n_estimators=500, random_state=42)
+rf.fit(X, y)
 
 # Apply model to make predictions
 prediction = rf.predict(X)
