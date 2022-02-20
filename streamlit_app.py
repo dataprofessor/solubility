@@ -115,21 +115,15 @@ y = df.logS
 
 if ml_option == 'RandomForestRegressor':
   st.write('Random forest!')
+  rf = RandomForestRegressor(n_estimators=500, random_state=42)
+  rf.fit(X, y)
+  st.header('Predicted LogS values')
+  prediction = rf.predict(X)
+  prediction[1:] # Skips the dummy first item
+  
 if ml_option == 'SVR':
   st.write('Support vector regression!')
-
-#rf = RandomForestRegressor(n_estimators=500, random_state=42)
-#rf.fit(X, y)
-
-#svr = SVR()
-#svr.fit(X, y)
-
-# Apply model to make predictions
-prediction = rf.predict(X)
-prediction_svr = svr.predict(X)
-  #prediction = load_model.predict(X)
-  #prediction_proba = load_model.predict_proba(X)
-
-st.header('Predicted LogS values')
-prediction[1:] # Skips the dummy first item
-prediction_svr[1:]
+  svr = SVR()
+  svr.fit(X, y)
+  prediction_svr = svr.predict(X)
+  prediction_svr[1:]
