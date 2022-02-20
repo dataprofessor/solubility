@@ -101,7 +101,7 @@ X[1:] # Skips the dummy first item
 # Pre-built model
 ######################
 
-ml_option = st.selectbox('What ML algorithm to use?,
+ml_option = st.selectbox('What ML algorithm to use?',
              ('RandomForestRegressor', 'SVR'))
 
 # Reads in saved model
