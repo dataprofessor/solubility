@@ -119,12 +119,12 @@ if ml_option == 'RandomForestRegressor':
   st.subheader('Random forest')
   rf = RandomForestRegressor(n_estimators=500, random_state=42)
   rf.fit(X, y)
-  prediction = rf.predict(X_desc[1:])
+  prediction = rf.predict(X_desc)
   prediction[1:] # Skips the dummy first item
   
 if ml_option == 'SVR':
   st.subheader('Support vector regression')
   svr = SVR()
   svr.fit(X, y)
-  prediction_svr = svr.predict(X_desc[1:])
+  prediction_svr = svr.predict(X_desc)
   prediction_svr[1:]
