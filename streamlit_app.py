@@ -113,10 +113,10 @@ st.write(X)
 st.write(y)
 
 rf = RandomForestClassifier(n_estimators=500, random_state=42)
-#rf.fit(X, y)
+rf.fit(X, y)
 
 # Apply model to make predictions
-prediction = rf.predict(X)
+#prediction = rf.predict(X)
   #prediction = load_model.predict(X)
   #prediction_proba = load_model.predict_proba(X)
 
