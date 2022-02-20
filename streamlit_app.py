@@ -9,6 +9,7 @@ from PIL import Image
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.svm import SVR
 
 ######################
 # Custom function
@@ -100,6 +101,9 @@ X[1:] # Skips the dummy first item
 # Pre-built model
 ######################
 
+ml_option = st.selectbox('What ML algorithm to use?,
+             ('RandomForestRegressor', 'SVR'))
+
 # Reads in saved model
 #load_model = pickle.load(open('solubility_model.pkl', 'rb'))
 
@@ -111,10 +115,15 @@ y = df.logS
 rf = RandomForestRegressor(n_estimators=500, random_state=42)
 rf.fit(X, y)
 
+svr = SVR()
+svr.fit(X, y)
+
 # Apply model to make predictions
 prediction = rf.predict(X)
+prediction_svr = svr.predict(X)
   #prediction = load_model.predict(X)
   #prediction_proba = load_model.predict_proba(X)
 
 st.header('Predicted LogS values')
 prediction[1:] # Skips the dummy first item
+prediction_svr[1:]
