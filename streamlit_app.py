@@ -113,11 +113,16 @@ df = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/de
 X = df.drop(['logS'], axis=1)
 y = df.logS
 
-rf = RandomForestRegressor(n_estimators=500, random_state=42)
-rf.fit(X, y)
+if ml_option == 'RandomForestRegressor':
+  st.write('Random forest!')
+if ml_option == 'SVR':
+  st.write('Support vector regression!')
 
-svr = SVR()
-svr.fit(X, y)
+#rf = RandomForestRegressor(n_estimators=500, random_state=42)
+#rf.fit(X, y)
+
+#svr = SVR()
+#svr.fit(X, y)
 
 # Apply model to make predictions
 prediction = rf.predict(X)
