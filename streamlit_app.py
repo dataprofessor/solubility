@@ -110,7 +110,7 @@ y = df.logS
 
 st.write(X)
 
-st.write(y)
+st.write(y.dtype)
 
 rf = RandomForestClassifier(n_estimators=500, random_state=42)
 rf.fit(X, y)
