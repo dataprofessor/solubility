@@ -94,8 +94,8 @@ SMILES[1:] # Skips the dummy first item
 
 ## Calculate molecular descriptors
 st.header('Computed molecular descriptors')
-X = generate(SMILES)
-X[1:] # Skips the dummy first item
+X_desc = generate(SMILES)
+X_desc[1:] # Skips the dummy first item
 
 ######################
 # Pre-built model
@@ -119,12 +119,12 @@ if ml_option == 'RandomForestRegressor':
   st.subheader('Random forest')
   rf = RandomForestRegressor(n_estimators=500, random_state=42)
   rf.fit(X, y)
-  prediction = rf.predict(X)
+  prediction = rf.predict(X_desc[1:])
   prediction[1:] # Skips the dummy first item
   
 if ml_option == 'SVR':
   st.subheader('Support vector regression')
   svr = SVR()
   svr.fit(X, y)
-  prediction_svr = svr.predict(X)
+  prediction_svr = svr.predict(X_desc[1:])
   prediction_svr[1:]
