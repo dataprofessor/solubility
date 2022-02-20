@@ -8,6 +8,7 @@ import pickle
 from PIL import Image
 from rdkit import Chem
 from rdkit.Chem import Descriptors
+from sklearn.ensemble import RandomForestClassifier
 
 ######################
 # Custom function
@@ -100,10 +101,14 @@ X[1:] # Skips the dummy first item
 ######################
 
 # Reads in saved model
-load_model = pickle.load(open('solubility_model.pkl', 'rb'))
+#load_model = pickle.load(open('solubility_model.pkl', 'rb'))
+
+# Random forest
+rf = RandomForestClassifier(n_estimators=500, random_state=42)
 
 # Apply model to make predictions
-prediction = load_model.predict(X)
+prediction = rf.predict(X)
+#prediction = load_model.predict(X)
 #prediction_proba = load_model.predict_proba(X)
 
 st.header('Predicted LogS values')
